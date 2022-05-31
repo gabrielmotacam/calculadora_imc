@@ -36,6 +36,13 @@ botaoAdicionar.addEventListener("click", function(event){
     //cria um elemento desejado no html(criando uma linha na tabela)
     var pacienteTr = document.createElement("tr");
     
+    //Se o peso não for válido, ele sai imediatamente da função adicionar por causa do 'return'
+    if(!validaPaciente(paciente)){
+        console.log("Paciente inválido");
+        return;
+    }
+
+
     var nomeTd = document.createElement("td");
     var pesoTd = document.createElement("td");
     var alturaTd = document.createElement("td");
@@ -58,7 +65,7 @@ botaoAdicionar.addEventListener("click", function(event){
     pacienteTr.appendChild(gorduraTd);
     pacienteTr.appendChild(imcTd);
 
-  
+
 
     //acessa o id tabela-pacientes do html e adiciona um elemento dentro dele
     var tabela = document.querySelector("#tabela-pacientes");
@@ -80,4 +87,11 @@ function obtemPacienteDoFormulario(form){
     }
     //retorna o valor dentro da variável paciente e encerra a função
     return paciente;
+}
+function validaPaciente(paciente){
+    if(validaPeso(paciente.peso)){
+        return true;
+    }else {
+        return false;
+    }
 }

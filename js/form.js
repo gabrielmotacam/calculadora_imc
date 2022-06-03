@@ -35,12 +35,25 @@ botaoAdicionar.addEventListener("click", function(event){
     
     //cria um elemento desejado no html(criando uma linha na tabela)
     var pacienteTr = document.createElement("tr");
+
+    // cria variável erro e coloca a condição de que se o tamanho da string for maior que zero (pois a string seria vazia se estivesse correto)
+    //então printa no console uma mensagem de erro
+    var erro = validaPaciente(paciente);
     
-    //Se o peso não for válido, ele sai imediatamente da função adicionar por causa do 'return'
-    if(!validaPaciente(paciente)){
-        console.log("Paciente inválido");
-        return;
+    if (erro.length > 0){ // vai ser necessário mudar essa parte
+        
+        var mensagemErro = document.querySelector("#mensagem-erro");
+        mensagemErro.textContent = erro;
+
+        return; //return sai de dentro da função principal
     }
+
+
+    //Se o peso não for válido, ele sai imediatamente da função adicionar por causa do 'return'
+    // if(!validaPaciente(paciente)){
+    //     console.log("Paciente inválido");
+    //     return;
+    // }
 
 
     var nomeTd = document.createElement("td");
@@ -89,9 +102,21 @@ function obtemPacienteDoFormulario(form){
     return paciente;
 }
 function validaPaciente(paciente){
-    if(validaPeso(paciente.peso)){
-        return true;
-    }else {
-        return false;
+
+    var erros = []; //cria uma array
+
+
+    if(!validaPeso(paciente.peso)){
+        erros.push("Peso é inválido!") // .push joga a informação dentro do parêntesis pra dentro do array erros
     }
+
+    if(!validaAltura(paciente.altura)){
+        erros.push("Altura é Inválida!")
+    }
+    return erros;
 }
+
+// quando o if ocupa apenas uma linha, é possível montar tudo em linha reta
+//ex: if(!validaPeso(paciente.peso)) erros.push("Peso é inválido!")
+//só precisa tirar as chaves!
+

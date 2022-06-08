@@ -139,8 +139,23 @@ button[disabled=disabled], button:disabled {
 .campo-medio{
 	width: 300px;
 }
-#mensagem-erro{
+#mensagens-erro{
 	color: red;
-	font-size: 20px;
+	font-size: 15px;
 	
+}
+
+.fadeOut{
+	opacity: 0;
+	transition: 0.5s;
+}
+
+#filtrar-tabela{
+	width: 200px;
+	height: 35px;
+	margin-bottom: 10px;
+}
+
+.invisivel{
+	display: none; /*Esconde alguma informação na tela*/
 }

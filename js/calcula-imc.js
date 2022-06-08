@@ -4,7 +4,7 @@ var titulo = document.querySelector(".titulo");
 titulo.textContent = "Calculadora IMC";
 
 var titulo2 = document.querySelector(".titulo2");
-titulo2.textContent = "Exemplos"
+titulo2.textContent = "Pacientes"
 
 
 //querySelectAll busca todos os elementos relacionados à pesquisa, em todas as linhas. Diferentemente do querySelector (que só busca uma linha)
@@ -14,6 +14,9 @@ var pacientes = document.querySelectorAll(".paciente")
 for (var i = 0; i < pacientes.length; i++){
     
     var paciente = pacientes[i];
+
+    // var tdNome = paciente.querySelector(".info-nome");
+    // var nome = tdNome.textContent;
     
     var tdPeso = paciente.querySelector(".info-peso");
     var peso= tdPeso.textContent;
@@ -31,9 +34,9 @@ for (var i = 0; i < pacientes.length; i++){
     var alturaEhValida = validaAltura(altura);
     
     // //condição peso -- ! significa 'não'// inverte valores... se era true, se tornará false
-    if (!pesoEhValido){
-        console.log("peso inválido!");
+    if (!pesoEhValido){        
         pesoEhValido = false;
+        console.log("peso inválido!");
         tdImc.textContent = "Peso Inválido!";
         //é bom tratar de estilização no CSS, então se criou uma classe para linhas com erro de peso ou altura
         //classList --> retorna uma lista de classes que a var possui.

@@ -9,8 +9,8 @@ campoFiltro.addEventListener("input", function(){
             var paciente = pacientes[i];            
             var tdNome = paciente.querySelector(".info-nome");
             var nome = tdNome.textContent;
-            // criando um filtro com expressão regular
-            var expressao = new RegExp(this.value, "i"); //'i'= insensitive, busca tanto maiusculas qnto minusculas
+            // criando um filtro com expressão regular (RegExp)
+            var expressao = new RegExp(this.value,"i"); //'i'= insensitive, busca tanto maiusculas qnto minusculas
             if(!expressao.test(nome)){
                 paciente.classList.add("invisivel");//atribui a classe invisivel feita no CSS para esse condicional
             }else {
@@ -19,8 +19,9 @@ campoFiltro.addEventListener("input", function(){
         }
 
     }else{
-        for (var i = 0; i < pacientes.length; i++);
+        for (var i = 0; i < pacientes.length; i++){
             var paciente = pacientes[i];
             paciente.classList.remove("invisivel");
+        }
     }
 });

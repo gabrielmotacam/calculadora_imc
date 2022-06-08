@@ -31,7 +31,7 @@ botaoAdicionar.addEventListener("click", function(event){
 
     var paciente = obtemPacienteDoFormulario(form);
 
-    var pacienteTr = montaTr(paciente);
+    
 
     // cria variável erro e coloca a condição de que se o tamanho da string for maior que zero (pois a string seria vazia se estivesse correto)
     //então printa no console uma mensagem de erro
@@ -42,40 +42,48 @@ botaoAdicionar.addEventListener("click", function(event){
         return; //return sai de dentro da função principal
     }
 
-    var tabela = document.querySelector("#tabela-pacientes");
+   
+   adicionaPacienteNaTabela(paciente);
 
-    tabela.appendChild(pacienteTr);
+   
+
     
     
-    //cria um elemento desejado no html(criando uma linha na tabela)
-    var pacienteTr = document.createElement("tr");
+    
 
     //Se o peso não for válido, ele sai imediatamente da função adicionar por causa do 'return'
     // if(!validaPaciente(paciente)){
     //     console.log("Paciente inválido");
     //     return;
-    // }
-
-
-    var nomeTd = document.createElement("td");
-    var pesoTd = document.createElement("td");
-    var alturaTd = document.createElement("td");
-    var gorduraTd = document.createElement("td");
-    var imcTd = document.createElement("td");
-
-    
-    //acessa o id tabela-pacientes do html e adiciona um elemento dentro dele
-    //adiciona o paciente na tabela
-    var tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
-
+    // } 
+  
     form.reset();
 
     var mensagensErro = document.querySelector("#mensagens-erro");
     mensagensErro.innerHTML = "";
 });
 
-  // função para criar uma td (células dentro da tr)
+
+function adicionaPacienteNaTabela(paciente){
+    var pacienteTr = montaTr(paciente);
+    //acessa o id tabela-pacientes do html e adiciona um elemento dentro dele
+    //adiciona o paciente na tabela
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+
+}
+
+
+//cria um elemento desejado no html(criando uma linha na tabela)
+var pacienteTr = document.createElement("tr");
+
+var nomeTd = document.createElement("td");
+var pesoTd = document.createElement("td");
+var alturaTd = document.createElement("td");
+var gorduraTd = document.createElement("td");
+var imcTd = document.createElement("td");
+
+// função para criar uma td (células dentro da tr)
 function montaTd(dado, classe) {
     var td = document.createElement("td");
     td.classList.add(classe);
@@ -100,6 +108,7 @@ pacienteTr.appendChild(pesoTd);
 pacienteTr.appendChild(alturaTd);
 pacienteTr.appendChild(gorduraTd);
 pacienteTr.appendChild(imcTd);
+
 
 
 function montaTr(paciente){
